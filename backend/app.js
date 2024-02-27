@@ -21,6 +21,12 @@ mongoose
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 
+// routes
+const authRoutes = require("./routes/auth/auth");
+app.use("/auth", authRoutes);
+
+// const authRoutes = require("./routes")
+
 // port
 const port = process.env.PORT || 8080;
 
