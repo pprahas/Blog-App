@@ -22,4 +22,15 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  const user = req.body;
+  
+  try {
+    const email = await User.findOne({ email: user.email});
+    return res.status(200).json(email);
+  } catch (error) {
+    return res.status(400).statusMessage("wronggg");
+  }
+});
+
 module.exports = router;
