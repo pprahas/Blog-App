@@ -25,5 +25,4 @@ app.use(cors({ origin: true, credentials: true }));
 const port = process.env.PORT || 8080;
 
 // listener
-
 const server = app.listen(port, () => console.log("Server is running"));
