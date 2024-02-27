@@ -25,6 +25,9 @@ app.use(cors({ origin: true, credentials: true }));
 const authRoutes = require("./routes/auth/auth");
 app.use("/auth", authRoutes);
 
+const blogRoutes = require("./routes/blog/blog");
+app.use("/blog", blogRoutes);
+
 // const authRoutes = require("./routes")
 
 // port
