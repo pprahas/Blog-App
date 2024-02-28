@@ -20,7 +20,6 @@ export default function () {
       </a>
       <div className="flex items-center space-x-6 rtl:space-x-reverse">
         <a
-        //   href="tel:5541251234"
           className="text-sm  text-gray-500 dark:text-white"
         >
           User Name
@@ -40,7 +39,7 @@ export default function () {
         <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
           <li>
             <a
-              href="#"
+              href="/home"
               className="text-gray-900 dark:text-white hover:underline"
               aria-current="page"
             >
@@ -49,7 +48,7 @@ export default function () {
           </li>
           <li>
             <a
-              href="#"
+              href="/createBlog"
               className="text-gray-900 dark:text-white hover:underline"
             >
               Create Blog
