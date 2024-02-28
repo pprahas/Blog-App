@@ -13,6 +13,10 @@ const blogSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
+  name: {
+    type: String,
+    required: true,
+  },
 });
 
 const Blog = mongoose.model("Blog", blogSchema);
