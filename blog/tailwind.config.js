@@ -12,11 +12,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
-  darkMode: "class", // add this line for dark mode configuration
+  darkMode: "class", 
 
   theme: {
     extend: {
-      // Add your color extension here
       colors: {
         primary: {
           50: "#eff6ff",
@@ -33,7 +32,6 @@ module.exports = {
         },
       },
     },
-    // Add your fontFamily configuration here
     fontFamily: {
       body: [
         "Inter",
