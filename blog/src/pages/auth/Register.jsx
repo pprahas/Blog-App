@@ -17,11 +17,11 @@ export default function () {
       })
       .then((res) => {
         console.log("USER CREATED SUCCESSFULLY");
-        alert("USER CREATED SUCCESSFULLY");
+        alert("User created successfully!!");
       })
       .catch((err) => {
         console.log("ERROR WHILE CREATING USER");
-        alert("ERROR WHILE CREATING USER");
+        alert("Email Address already registered. Try using a different email or Login into your account.");
       });
   };
 
