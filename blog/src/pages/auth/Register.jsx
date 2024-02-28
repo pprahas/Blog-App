@@ -1,4 +1,30 @@
+import { useForm } from "../../hooks/useForm";
+import React from "react";
+import axios from "axios";
+
 export default function () {
+  const [values, handleChange] = useForm({ firstName: "", lastName: "", email: "", password: "" });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/auth/register", {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+      })
+      .then((res) => {
+        console.log("USER CREATED SUCCESSFULLY");
+        alert("USER CREATED SUCCESSFULLY");
+      })
+      .catch((err) => {
+        console.log("ERROR WHILE CREATING USER");
+        alert("ERROR WHILE CREATING USER");
+      });
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -18,7 +44,7 @@ export default function () {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Register your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleSubmit}>
               <div>
                 <label
                   // htmlFor="email"
@@ -28,11 +54,13 @@ export default function () {
                 </label>
                 <input
                   type="text"
-                  // name="email"
+                  name="firstName"
                   // id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Input your First Name"
                   required=""
+                  value={values.firstName}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -44,11 +72,13 @@ export default function () {
                 </label>
                 <input
                   type="text"
-                  // name="email"
+                  name="lastName"
                   // id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Input your Last Name"
                   required=""
+                  value={values.lastName}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -65,6 +95,8 @@ export default function () {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                   required=""
+                  value={values.email}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -81,6 +113,8 @@ export default function () {
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
+                  value={values.password}
+                  onChange={handleChange}
                 />
               </div>
               {/* <div className="flex items-center justify-between">
