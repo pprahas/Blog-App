@@ -20,6 +20,7 @@ router.post("/create", async (req, res) => {
       content: data.blog.content,
       title: data.blog.title,
       date: now,
+      name: data.blog.name,
     });
 
     user.blogs.push(dbBlog);
