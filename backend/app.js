@@ -17,7 +17,7 @@ mongoose
   .then(() => console.log("DB CONNECTED"))
   .catch((err) => console.log("DB CONNECTION ERROR", err));
 
-/// middleware
+/// middlewaree
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 
