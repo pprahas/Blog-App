@@ -1,18 +1,4 @@
-import { useNavigate } from "react-router-dom";
 export default function () {
-  const navigate = useNavigate();
-  let userData = window.localStorage.getItem("userData");
-  userData = JSON.parse(userData);
-  let fullName = userData.firstName + " " + userData.lastName;
-  console.log(userData.firstName);
-
-  const handleLogout = () => {
-    // alert("logout");
-    window.localStorage.removeItem("isLoggedIn");
-    window.localStorage.removeItem("userData");
-    navigate("/login");
-  };
-
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -33,20 +19,27 @@ export default function () {
             </span>
           </a>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
-            <a className="text-sm  text-gray-500 dark:text-white">{fullName}</a>
+            {/* <a className="text-sm  text-gray-500 dark:text-white">{fullName}</a> */}
             <a
-              href="#"
+              href="/login"
               className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
-              onClick={handleLogout}
+              // onClick={handleLogout}
             >
-              Sign Out
+              Login
+            </a>
+            <a
+              href="/register"
+              className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
+              // onClick={handleLogout}
+            >
+              Register
             </a>
           </div>
         </div>
       </nav>
       <nav className="bg-gray-50 dark:bg-gray-700">
         <div className="max-w-screen-xl px-4 py-3 mx-auto">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
               <li>
                 <a
@@ -66,9 +59,11 @@ export default function () {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </nav>
+      {/* <h1 className="">Invalid Login</h1> */}
+      <h1 className="text-4xl font-bold text-center mt-20">Invalid Login</h1>
     </>
   );
 }
