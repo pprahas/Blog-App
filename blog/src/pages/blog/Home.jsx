@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
 import Blog from "./Blog";
+import InvalidLogin from "../invalidLogin/InvalidLogin";
 
 export default function () {
+  const loggedIn = window.localStorage.getItem("isLoggedIn");
   const [blogs, setBlogs] = useState([]);
 
   const getBlogs = async () => {
@@ -33,13 +35,17 @@ export default function () {
     getBlogs();
   }, []);
 
-  return (
+  return loggedIn ? (
     <>
       <NavBar />
       <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div className="flex justify-between px-4 mx-auto max-w-screen-xl "></div>
         <div className="mb-16">{blogs}</div>
       </main>
+    </>
+  ) : (
+    <>
+      <InvalidLogin />
     </>
   );
 }

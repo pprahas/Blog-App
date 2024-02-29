@@ -16,6 +16,8 @@ export default function () {
         password: values.password,
       })
       .then((res) => {
+        window.localStorage.setItem("userData", JSON.stringify(res.data));
+        window.localStorage.setItem("isLoggedIn", true);
         navigate("/home");
         console.log("WELCOME TO THE BLOG APP");
       })

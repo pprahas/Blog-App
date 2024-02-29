@@ -34,17 +34,17 @@ router.post("/login", async (req, res) => {
 
   try {
     const dbUser = await User.findOne({ email: user.email });
-    if(!dbUser){
-      return res.status(400).send({ msg: "Incorrect Email or Password"})
+    if (!dbUser) {
+      return res.status(400).send({ msg: "Incorrect Email or Password" });
     }
     bcrypt.compare(user.password, dbUser.password).then((match) => {
-      if (match){
-        return res.status(200).send({ msg: "Login successful"});
+      if (match) {
+        return res.status(200).send(dbUser);
       }
-      return res.status(400).send({ msg: "Incorrect Email or Password"})
-    })
+      return res.status(400).send({ msg: "Incorrect Email or Password" });
+    });
   } catch (error) {
-    return res.status(400).send({ msg: "Login failed"});
+    return res.status(400).send({ msg: "Login failed" });
   }
 });
 
