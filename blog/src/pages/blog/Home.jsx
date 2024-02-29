@@ -13,7 +13,7 @@ export default function () {
       .get("http://localhost:8080/blog/display")
       .then((res) => {
         let temp = [];
-        for (let i = 0; i < res.data.length; i++) {
+        for (let i = res.data.length - 1; i >= 0; i--) {
           let data = res.data[i];
           let dateObj = new Date(data.date);
           // Format the date as "Month Day, Year" (e.g., "February 28, 2024")
