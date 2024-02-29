@@ -16,7 +16,6 @@ export default function () {
         for (let i = res.data.length - 1; i >= 0; i--) {
           let data = res.data[i];
           let dateObj = new Date(data.date);
-          // Format the date as "Month Day, Year" (e.g., "February 28, 2024")
           let formattedDate = dateObj.toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
