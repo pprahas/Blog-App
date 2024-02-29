@@ -1,10 +1,17 @@
 import { useForm } from "../../hooks/useForm";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
-  const [values, handleChange] = useForm({ firstName: "", lastName: "", email: "", password: "" });
+  const [values, handleChange] = useForm({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,10 +25,13 @@ export default function () {
       .then((res) => {
         console.log("USER CREATED SUCCESSFULLY");
         alert("User created successfully!!");
+        navigate("/login");
       })
       .catch((err) => {
         console.log("ERROR WHILE CREATING USER");
-        alert("Email Address already registered. Try using a different email or Login into your account.");
+        alert(
+          "Email Address already registered. Try using a different email or Login into your account."
+        );
       });
   };
 
@@ -33,10 +43,10 @@ export default function () {
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
           <img
-              className="w-8 h-8 mr-2"
-              src="https://img.icons8.com/external-flat-02-chattapat-/64/external-blog-social-media-flat-02-chattapat-.png"
-              alt="Blog App Logo"
-            />
+            className="w-8 h-8 mr-2"
+            src="https://img.icons8.com/external-flat-02-chattapat-/64/external-blog-social-media-flat-02-chattapat-.png"
+            alt="Blog App Logo"
+          />
           Blog App
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -44,7 +54,11 @@ export default function () {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Register your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleSubmit}>
+            <form
+              className="space-y-4 md:space-y-6"
+              action="#"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label
                   // htmlFor="email"

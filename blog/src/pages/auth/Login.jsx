@@ -1,9 +1,11 @@
 import { useForm } from "../../hooks/useForm";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
   const [values, handleChange] = useForm({ email: "", password: "" });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,9 +16,11 @@ export default function () {
         password: values.password,
       })
       .then((res) => {
+        navigate("/home");
         console.log("WELCOME TO THE BLOG APP");
       })
       .catch((err) => {
+        alert("Incorrect Email or Password");
         console.log("ENTRY DENIED");
       });
   };
