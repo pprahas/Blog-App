@@ -33,22 +33,12 @@ router.post("/create", async (req, res) => {
   }
 });
 
-
 router.get("/display", async (req, res) => {
   try {
-    const users = await User.find().populate("blogs");
-    if (!users) {
-      return res.status(404).send({ msg: "No blogs found" });
-    }
-    const allBlogs = users.reduce((blogs, user) => {
-      return blogs.concat(user.blogs);
-    }, []);
-
-    return res.status(200).send(allBlogs);
+    const blogs = await Blog.find();
+    return res.status(200).send(blogs);
   } catch (error) {
     return res.status(500).send({ msg: "Internal Server Error" });
   }
 });
-
-
 module.exports = router;
